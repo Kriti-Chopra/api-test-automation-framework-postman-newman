@@ -71,9 +71,7 @@
 							"    pm.response.to.have.status(201);",
 							"});",
 							"",
-							"//save the created id for next test",
-							"const responseJson = pm.response.json();",
-							"pm.environment.set(\"user_id\",responseJson.id);"
+							""
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -101,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Clair\",\n  \"job\": \"QA Engineer\"\n}",
+					"raw": "{\n  \"name\": \"Rosy\",\n  \"job\": \"QA Engineer\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -114,6 +112,26 @@
 		},
 		{
 			"name": "GetUserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c40c1cd1-fdf3-4189-a22c-7be42bb0f907",
+						"exec": [
+							"//verify the last name of the user",
+							"",
+							"pm.test(\"Validate last name using userid\",()=>{",
+							"const responseJson = pm.response.json();",
+							"console.log(responseJson.data.id);",
+							"pm.expect(responseJson.data.last_name).to.equal(pm.environment.get(\"user_last_name\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"id": "b5fcf611-fd8c-4c7f-94bb-44342ef99cc8",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -136,23 +154,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": {
-					"raw": "{{base_url}}/api/users?id={{user_id}}",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"users"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "{{user_id}}",
-							"type": "text"
-						}
-					]
-				}
+				"url": "{{base_url}}/api/users/{{user_id}}"
 			},
 			"response": []
 		}
