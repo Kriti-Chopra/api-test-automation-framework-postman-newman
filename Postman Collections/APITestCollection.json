@@ -32,6 +32,7 @@
 							"",
 							"//save id for user - Emma",
 							"const data = responseJson.data;",
+							"console.log(data.filter(user=>user.first_name==\"Emma\"));",
 							""
 						],
 						"type": "text/javascript",
