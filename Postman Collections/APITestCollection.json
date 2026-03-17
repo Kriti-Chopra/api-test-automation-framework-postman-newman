@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "558240f0-18bf-43d5-b6d8-8dbd7e49eeb1",
+		"name": "Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58b8eab8-60af-4832-b439-c20f9f61a9e4",
+						"exec": [
+							"//get count of records",
+							"//print names of all users",
+							"",
+							"pm.test(\"Verify response status\", ()=>{",
+							"    pm.response.to.have.status(\"200\");",
+							"});",
+							"",
+							"pm.test(\"validate per page user count\",()=>{",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.per_page===6,\"Per page count is 6.\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "a76e4f55-1538-4c0a-8955-6c61bb99ca21",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/api/users"
+			},
+			"response": []
+		}
+	]
+}
