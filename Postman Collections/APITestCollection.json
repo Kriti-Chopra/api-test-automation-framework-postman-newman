@@ -31,8 +31,9 @@
 							"});",
 							"",
 							"//save id for user - Emma",
-							"const data = responseJson.data;",
-							"console.log(data.filter(user=>user.first_name==\"Emma\"));",
+							"const userData = responseJson.data;",
+							"const filteredUser = userData.filter(user=>user.first_name=={{user}});",
+							"pm.environment.set(\"user_id\",filteredUser[0].id);",
 							""
 						],
 						"type": "text/javascript",
