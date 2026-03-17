@@ -47,6 +47,18 @@
 				"url": "{{base_url}}/api/users"
 			},
 			"response": []
+		},
+		{
+			"name": "AddUser",
+			"id": "5bb02c5b-78ff-411a-a6a9-65db3b76b98b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
