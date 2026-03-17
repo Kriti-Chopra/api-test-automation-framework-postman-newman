@@ -11,19 +11,28 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "58b8eab8-60af-4832-b439-c20f9f61a9e4",
+						"id": "38c51e17-c4fe-4b6c-8c08-d6b4c8a7ce1c",
 						"exec": [
 							"//get count of records",
 							"//print names of all users",
 							"",
+							"const responseJson = pm.response.json();",
+							"",
 							"pm.test(\"Verify response status\", ()=>{",
-							"    pm.response.to.have.status(\"200\");",
+							"    pm.response.to.have.status(200);",
 							"});",
 							"",
 							"pm.test(\"validate per page user count\",()=>{",
-							"    const responseJson = pm.response.json();",
 							"    pm.expect(responseJson.per_page===6,\"Per page count is 6.\");",
-							"});"
+							"});",
+							"",
+							"pm.test(\"Validate data keys\", ()=>{",
+							"    pm.expect(responseJson.data[0]).to.have.property(\"id\");",
+							"});",
+							"",
+							"//save id for user - Emma",
+							"const data = responseJson.data;",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {},
