@@ -30,7 +30,7 @@
 							"    pm.expect(responseJson.data[0]).to.have.property(\"id\");",
 							"});",
 							"",
-							"//save id for user - Emma",
+							"//save id for user",
 							"const userData = responseJson.data;",
 							"const filteredUser = userData.filter(user=>user.first_name==pm.environment.get(\"user_first_name\"));",
 							"pm.environment.set(\"user_id\",filteredUser[0].id);",
