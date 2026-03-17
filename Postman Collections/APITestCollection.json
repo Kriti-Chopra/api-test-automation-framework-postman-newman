@@ -32,7 +32,7 @@
 							"",
 							"//save id for user - Emma",
 							"const userData = responseJson.data;",
-							"const filteredUser = userData.filter(user=>user.first_name=={{user}});",
+							"const filteredUser = userData.filter(user=>user.first_name==pm.environment.get(\"user_first_name\"));",
 							"pm.environment.set(\"user_id\",filteredUser[0].id);",
 							""
 						],
