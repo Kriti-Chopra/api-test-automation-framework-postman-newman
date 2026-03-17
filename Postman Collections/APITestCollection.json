@@ -50,6 +50,26 @@
 		},
 		{
 			"name": "AddUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1122498d-ceed-4a53-a511-226ecf11332e",
+						"exec": [
+							"pm.test(\"validate response status\",()=>{",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//save the created id for next test",
+							"const responseJson = pm.response.json();",
+							"pm.environment.set(\"user_id\",responseJson.id);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"id": "5bb02c5b-78ff-411a-a6a9-65db3b76b98b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -78,6 +98,50 @@
 					}
 				},
 				"url": "{{base_url}}/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserById",
+			"id": "b5fcf611-fd8c-4c7f-94bb-44342ef99cc8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/api/users?id={{user_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{user_id}}",
+							"type": "text"
+						}
+					]
+				}
 			},
 			"response": []
 		}
